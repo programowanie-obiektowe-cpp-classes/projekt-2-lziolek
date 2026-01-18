@@ -4,9 +4,13 @@
 #include <iostream>
 #include <vector>
 
+TEST_CASE("Niepoprawna data rzuca wyjatek") {
+    REQUIRE_THROWS(Data(2024, 13, 1));
+    REQUIRE_THROWS(Data(2024, 2, 30));
+}
+
 TEST_CASE("Test formatowania daty") {
     Data d(2025, 12, 6);
-
     std::cout << "\n=== Formatowanie daty ===\n";
     std::cout << "ISO: " << d.formatISO() << "\n";
     std::cout << "EU : " << d.formatEU() << "\n";
@@ -19,7 +23,7 @@ TEST_CASE("Test formatowania daty") {
 
 TEST_CASE("Test przesuwania dni") {
     Data d(2024, 2, 29);
-
+    INFO("Start: " << d.formatEU());
     std::cout << "\n=== Przesuwanie dni ===\n";
     std::cout << "Start: " << d.formatEU() << "\n";
 
